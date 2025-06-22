@@ -78,6 +78,92 @@ Version control tools for managing code history, enabling collaboration, and tra
 🔹 Markdown
 A lightweight markup language used for writing documentation, such as this README file, in a clean and readable format.
 
+🗃️ Database Design
+This project uses a relational database model to manage data integrity and relationships across various core entities. Below are the key entities, their main fields, and how they relate to one another.
+
+1. User
+Represents a person using the platform (host or guest).
+
+id: Unique identifier
+
+name: Full name of the user
+
+email: Email address (unique)
+
+password_hash: Encrypted password
+
+is_host: Boolean indicating if the user can list properties
+
+2. Property
+Represents a listing that can be booked.
+
+id: Unique identifier
+
+title: Name/title of the property
+
+description: Detailed info about the property
+
+location: City or area
+
+price_per_night: Cost of booking per night
+
+owner_id: Foreign key to User (host)
+
+3. Booking
+Represents a reservation made by a user.
+
+id: Unique identifier
+
+user_id: Foreign key to User (guest)
+
+property_id: Foreign key to Property
+
+start_date: Check-in date
+
+end_date: Check-out date
+
+status: Booking status (e.g., confirmed, cancelled)
+
+4. Review
+Represents feedback left by a guest after a stay.
+
+id: Unique identifier
+
+user_id: Foreign key to User (reviewer)
+
+property_id: Foreign key to Property
+
+rating: Star rating (e.g., 1–5)
+
+comment: Text feedback
+
+5. Payment
+Represents a payment transaction for a booking.
+
+id: Unique identifier
+
+booking_id: Foreign key to Booking
+
+amount: Total amount paid
+
+payment_method: Card, PayPal, etc.
+
+payment_status: Success, failed, pending
+
+🔗 Entity Relationships
+A User can be a host (owns properties) or a guest (books properties).
+
+A User can have many Properties (if they are a host).
+
+A User can make many Bookings (as a guest).
+
+A Booking belongs to one User and one Property.
+
+A Property can have many Bookings and many Reviews.
+
+A Review is linked to both the Property and the User who wrote it.
+
+A Payment is tied to a single Booking.
 
 
 🔗 Repository
