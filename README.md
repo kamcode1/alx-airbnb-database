@@ -54,6 +54,30 @@ Maintains clear and up-to-date project documentation using Markdown, including t
 🧠 Project Lead / Architect
 Oversees the technical direction and aligns architecture decisions with project goals. Coordinates between roles, supports blockers, and ensures adherence to timelines. Reviews pull requests, mentors team members, and ensures that all components integrate cohesively.
 
+🧰 Technology Stack
+Below is an overview of the technologies used in this Airbnb Clone backend project, along with their purpose:
+
+🔹 Django
+A high-level Python web framework used to build the core backend application. It provides tools for rapid development, secure handling of data, and building RESTful APIs using Django REST Framework (DRF).
+
+🔹 MySQL
+A powerful open-source relational database management system used to store and manage structured data such as user profiles, listings, bookings, and reviews. It ensures data integrity and supports complex relationships.
+
+🔹 GraphQL
+A query language for APIs that allows clients to request exactly the data they need. Used alongside REST to enable flexible and efficient client-server communication, especially useful for modern frontends.
+
+🔹 Docker
+A containerization platform used to package the application and its dependencies into portable containers. Ensures consistency across development, testing, and production environments.
+
+🔹 GitHub Actions
+A CI/CD tool integrated with GitHub, used to automate testing, linting, and deployment workflows. Ensures code quality and enables rapid delivery of new features and fixes.
+
+🔹 Git & GitHub
+Version control tools for managing code history, enabling collaboration, and tracking changes across multiple contributors. GitHub is also used to host the repository and manage issues, pull requests, and documentation.
+
+🔹 Markdown
+A lightweight markup language used for writing documentation, such as this README file, in a clean and readable format.
+
 
 
 🔗 Repository
