@@ -165,6 +165,34 @@ A Review is linked to both the Property and the User who wrote it.
 
 A Payment is tied to a single Booking.
 
+🧩 Feature Breakdown
+Below are the main features implemented in the backend of the Airbnb Clone project. Each feature contributes to the functionality and user experience of the booking platform.
+
+🔐 User Management
+Enables user registration, login, authentication, and profile updates. Distinguishes between guests and hosts, with role-based access to relevant features (e.g., property listing for hosts, booking for guests).
+
+🏠 Property Management
+Allows hosts to create, update, and delete property listings. Each listing includes details like title, description, location, photos, and pricing — ensuring hosts can showcase their properties effectively.
+
+📅 Booking System
+Handles the reservation process for guests. Users can check availability, make bookings, and view booking history. This feature ensures that dates are managed accurately and prevents double-booking.
+
+💳 Payment Integration
+Processes payments securely for confirmed bookings. Tracks transaction status, amount, and method to provide a reliable record for both the guest and platform.
+
+⭐ Review System
+Enables guests to leave reviews and ratings for properties after a stay. Reviews enhance trust and help future users make informed booking decisions.
+
+🔍 Search and Filter
+Supports property search by location, availability, price range, and other filters. Improves the discoverability of listings and enhances the user browsing experience.
+
+🛡️ Security and Authentication
+Implements user authentication (e.g., JWT), password hashing, and authorization layers. Ensures that sensitive data is protected and only authorized users can access specific actions.
+
+🔄 API & CI/CD Automation
+RESTful and GraphQL APIs provide structured communication between frontend and backend. Automated CI/CD pipelines (via GitHub Actions and Docker) ensure reliable deployments and code quality.
+
+
 
 🔗 Repository
 This is the official repository for the Airbnb Clone backend project under the ALX SE program.
