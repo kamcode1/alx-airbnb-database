@@ -192,6 +192,19 @@ Implements user authentication (e.g., JWT), password hashing, and authorization 
 🔄 API & CI/CD Automation
 RESTful and GraphQL APIs provide structured communication between frontend and backend. Automated CI/CD pipelines (via GitHub Actions and Docker) ensure reliable deployments and code quality.
 
+5. API Security Overview
+mandatory
+Objective: Understand the importance of securing the backend APIs.
+
+Instructions:
+
+In your README.md file, create a section called “API Security”.
+
+Explain the key security measures that will be implemented (e.g., authentication, authorization, rate limiting).
+
+Provide a brief explanation of why security is crucial for each key area of the project (e.g., protecting user data, securing payments, etc.).
+
+Commit and push the changes to your GitHub repository.
 
 
 🔗 Repository
