@@ -35,3 +35,27 @@ INNER JOIN
     User u
 ON 
     b.user_id = u.user_id;
+
+
+## Advanced Queries
+
+This section includes two advanced SQL queries that demonstrate how to use subqueries to retrieve meaningful insights from the database:
+
+- **Find all properties where the average rating is greater than 4.0**
+- **Find all users who have made more than 3 bookings**
+
+Both queries use subqueries — one with aggregation and one correlated — to analyze data across related tables.
+
+### Query
+
+The following query retrieves all properties where the average rating of reviews is greater than 4.0. It uses a subquery with `GROUP BY` and `HAVING` to calculate the average rating for each property and filters for properties that meet the condition:
+
+```sql
+SELECT * 
+FROM Property p
+WHERE p.property_id IN (
+    SELECT r.property_id
+    FROM Review r
+    GROUP BY r.property_id
+    HAVING AVG(r.rating) > 4.0
+);
