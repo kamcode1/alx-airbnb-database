@@ -59,3 +59,47 @@ WHERE p.property_id IN (
     GROUP BY r.property_id
     HAVING AVG(r.rating) > 4.0
 );
+
+
+## Booking Counts and Property Ranking
+
+This section includes two advanced SQL queries that demonstrate the use of aggregation, grouping, and window functions to analyze booking activity.
+
+---
+
+### Total Number of Bookings Per User
+
+This query counts the total number of bookings each user has made. It uses `COUNT()` with `GROUP BY` to group bookings by user. Users with no bookings are also included using a `LEFT JOIN`.
+
+```sql
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    COUNT(b.booking_id) AS total_bookings
+FROM 
+    User u
+LEFT JOIN 
+    Booking b
+ON 
+    u.user_id = b.user_id
+GROUP BY 
+    u.user_id, u.first_name, u.last_name
+ORDER BY 
+    total_bookings DESC;
+
+SELECT 
+    p.property_id,
+    p.name AS property_name,
+    COUNT(b.booking_id) AS total_bookings,
+    RANK() OVER (ORDER BY COUNT(b.booking_id) DESC) AS booking_rank
+FROM 
+    Property p
+LEFT JOIN 
+    Booking b
+ON 
+    p.property_id = b.property_id
+GROUP BY 
+    p.property_id, p.name
+ORDER BY 
+    booking_rank ASC;
