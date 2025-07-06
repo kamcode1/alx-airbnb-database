@@ -1,4 +1,4 @@
--- Initial query
+-- Initial query: Bookings + User + Property + Payment
 SELECT
     b.booking_id,
     b.start_date,
@@ -16,7 +16,8 @@ SELECT
 FROM booking b
 INNER JOIN user u ON b.user_id = u.user_id
 INNER JOIN property p ON b.property_id = p.property_id
-LEFT JOIN payment pay ON pay.booking_id = b.booking_id;
+LEFT JOIN payment pay ON pay.booking_id = b.booking_id
+WHERE b.status = 'confirmed';
 
 -- Performance analysis
 EXPLAIN ANALYZE
@@ -37,4 +38,5 @@ SELECT
 FROM booking b
 INNER JOIN user u ON b.user_id = u.user_id
 INNER JOIN property p ON b.property_id = p.property_id
-LEFT JOIN payment pay ON pay.booking_id = b.booking_id;
+LEFT JOIN payment pay ON pay.booking_id = b.booking_id
+WHERE b.status = 'confirmed';
