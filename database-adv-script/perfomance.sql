@@ -17,7 +17,8 @@ FROM booking b
 INNER JOIN user u ON b.user_id = u.user_id
 INNER JOIN property p ON b.property_id = p.property_id
 LEFT JOIN payment pay ON pay.booking_id = b.booking_id
-WHERE b.status = 'confirmed';
+WHERE b.status = 'confirmed'
+AND u.email = 'alice@example.com';
 
 -- Performance analysis
 EXPLAIN ANALYZE
@@ -39,4 +40,5 @@ FROM booking b
 INNER JOIN user u ON b.user_id = u.user_id
 INNER JOIN property p ON b.property_id = p.property_id
 LEFT JOIN payment pay ON pay.booking_id = b.booking_id
-WHERE b.status = 'confirmed';
+WHERE b.status = 'confirmed'
+AND u.email = 'alice@example.com';
