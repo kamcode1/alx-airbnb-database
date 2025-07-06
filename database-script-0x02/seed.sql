@@ -1,27 +1,27 @@
 -- Insert users
-INSERT INTO users (user_id, name, email, password, role)
+INSERT INTO user (user_id, first_name, last_name, email, password_hash, role)
 VALUES 
-  (gen_random_uuid(), 'Alice Johnson', 'alice@example.com', 'hashedpassword1', 'guest'),
-  (gen_random_uuid(), 'Bob Smith', 'bob@example.com', 'hashedpassword2', 'host'),
-  (gen_random_uuid(), 'Clara Lee', 'clara@example.com', 'hashedpassword3', 'host');
+  (UUID(), 'Alice', 'Johnson', 'alice@example.com', 'hashedpassword1', 'guest'),
+  (UUID(), 'Bob', 'Smith', 'bob@example.com', 'hashedpassword2', 'host'),
+  (UUID(), 'Clara', 'Lee', 'clara@example.com', 'hashedpassword3', 'host');
 
 -- Insert properties
-INSERT INTO properties (property_id, host_id, title, description, location, price_per_night, available_from, available_to)
+INSERT INTO property (property_id, host_id, name, description, location, price_pernight)
 VALUES
-  (gen_random_uuid(), (SELECT user_id FROM users WHERE name='Bob Smith'), 'Cozy Apartment', 'A quiet 1-bed apartment.', 'Nairobi', 40.00, '2025-07-01', '2025-07-31'),
-  (gen_random_uuid(), (SELECT user_id FROM users WHERE name='Clara Lee'), 'Beach House', 'Ocean view 2-bed villa.', 'Mombasa', 100.00, '2025-07-01', '2025-08-15');
+  (UUID(), (SELECT user_id FROM user WHERE first_name='Bob'), 'Cozy Apartment', 'A quiet 1-bed apartment.', 'Nairobi', 40.00),
+  (UUID(), (SELECT user_id FROM user WHERE first_name='Clara'), 'Beach House', 'Ocean view 2-bed villa.', 'Mombasa', 100.00);
 
 -- Insert bookings
-INSERT INTO bookings (booking_id, user_id, property_id, start_date, end_date, status)
+INSERT INTO booking (booking_id, user_id, property_id, start_date, end_date, total_price, status)
 VALUES
-  (gen_random_uuid(), (SELECT user_id FROM users WHERE name='Alice Johnson'), (SELECT property_id FROM properties WHERE title='Beach House'), '2025-07-03', '2025-07-06', 'confirmed');
+  (UUID(), (SELECT user_id FROM user WHERE first_name='Alice'), (SELECT property_id FROM property WHERE name='Beach House'), '2025-07-03', '2025-07-06', 300.00, 'confirmed');
 
 -- Insert payments
-INSERT INTO payments (payment_id, booking_id, amount, status, payment_date)
+INSERT INTO payment (payment_id, booking_id, amount, payment_method)
 VALUES
-  (gen_random_uuid(), (SELECT booking_id FROM bookings LIMIT 1), 300.00, 'completed', '2025-07-01');
+  (UUID(), (SELECT booking_id FROM booking LIMIT 1), 300.00, 'credit_card');
 
 -- Insert review
-INSERT INTO reviews (review_id, user_id, property_id, rating, comment, created_at)
+INSERT INTO review (review_id, user_id, property_id, rating, comment)
 VALUES
-  (gen_random_uuid(), (SELECT user_id FROM users WHERE name='Alice Johnson'), (SELECT property_id FROM properties WHERE title='Beach House'), 5, 'Amazing stay!', now());
+  (UUID(), (SELECT user_id FROM user WHERE first_name='Alice'), (SELECT property_id FROM property WHERE name='Beach House'), 5, 'Amazing stay!');
